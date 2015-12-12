@@ -7,8 +7,8 @@ import android.graphics.drawable.Drawable;
  */
 public class NavBarData {
 
-    /*private int iconId;
-    private String iconUri;*/
+    /*private int iconId;*/
+    private String iconId;
     private String title;
     private String discription;
 
@@ -30,21 +30,14 @@ public class NavBarData {
         this.discription = discription;
     }
 
-    /*public String getIconUri() {
-        return iconUri;
-    }
 
-    public void setIconUri(String iconUri) {
-        this.iconUri = iconUri;
-    }
-
-    public int getIconId() {
+    public String getIconId() {
         return iconId;
     }
 
-    public void setIconId(int iconId) {
+    public void setIconId(String iconId) {
         this.iconId = iconId;
-    }*/
+    }
 
     public String getTitle() {
         return title;

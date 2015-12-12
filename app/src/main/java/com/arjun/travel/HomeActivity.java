@@ -24,6 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.arjun.network.VolleySingleton;
+import com.arjun.util.Constants;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -54,8 +55,7 @@ public class HomeActivity extends AppCompatActivity {
         drawerFragment.setUp(R.id.fragrament_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
         StrictMode.setThreadPolicy(policy);
         RequestQueue requestQueue = VolleySingleton.getsInstance().getRequestQueue();
-        String url = "http://192.168.56.1:3000/cabs";
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.urlCars, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Toast.makeText(getApplicationContext(),response.toString(),Toast.LENGTH_LONG).show();
@@ -95,6 +95,7 @@ public class HomeActivity extends AppCompatActivity {
             /*navBarData.setIconUri("http://www.fordesigner.com/imguploads/Image/cjbc/zcool/png20080526/1211808122.png");*/
             navBarData.setThumb_d(thumb_d);
             navBarData.setTitle(obj.getString("name"));
+            navBarData.setIconId(obj.getString("_id"));
             navBarData.setDiscription("Seats : " + obj.getString("seats") +"\n" + obj.getString("location"));
             data.add(navBarData);
         }

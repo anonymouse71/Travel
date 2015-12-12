@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -42,6 +43,7 @@ public class NavBarAdapter extends RecyclerView.Adapter<NavBarAdapter.MyViewHold
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         NavBarData current = data.get(position);
         holder.title.setText(current.getTitle());
+        holder.title.setTag(R.id.listTitle,current.getIconId());
         /*holder.icon.setImageResource(current.getIconId());*/
         /*holder.icon.setImageURI(Uri.parse(current.getIconUri()));*/
         holder.icon.setImageDrawable(current.getThumb_d());
@@ -82,8 +84,9 @@ public class NavBarAdapter extends RecyclerView.Adapter<NavBarAdapter.MyViewHold
         public boolean onTouch(View v, MotionEvent event) {
 
             LinearLayout li =(LinearLayout) v.findViewById(R.id.custom_row_layout);
+            TextView textView = (TextView) v.findViewById(R.id.listTitle);
             li.setBackgroundColor(Color.parseColor("#EEEEEE"));
-            context.startActivity(new Intent(context,CarsActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            context.startActivity(new Intent(context,CarsActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK).putExtra("id",textView.getTag(R.id.listTitle).toString()));
             return false;
 
         }

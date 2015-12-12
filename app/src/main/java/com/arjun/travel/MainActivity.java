@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.arjun.network.VolleySingleton;
+import com.arjun.util.Constants;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -49,8 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 RequestQueue requestQueue = VolleySingleton.getsInstance().getRequestQueue();
                 final String tempuser = username.getText().toString().trim();
                 final String temppass = password.getText().toString().trim();
-                String url = "http://192.168.56.1:3000/users/" + tempuser;
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.urlUser + tempuser, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         JSONObject jsonObject = null;

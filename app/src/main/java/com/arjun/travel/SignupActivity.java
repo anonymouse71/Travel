@@ -18,6 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.arjun.network.VolleySingleton;
+import com.arjun.util.Constants;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -60,7 +61,6 @@ public class SignupActivity extends AppCompatActivity {
                 String tempph_no = ph_no.getText().toString().trim();
                 if (temppass.equals(tempcnfpass)) {
                     RequestQueue requestQueue = VolleySingleton.getsInstance().getRequestQueue();
-                    String url = "http://192.168.56.1:3000/users/";
                     JSONObject jsonObject = new JSONObject();
 
                     try {
@@ -71,7 +71,7 @@ public class SignupActivity extends AppCompatActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
+                    JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.POST, Constants.urlUser, jsonObject, new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
                             Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
