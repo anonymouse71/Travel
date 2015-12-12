@@ -1,6 +1,7 @@
 package com.arjun.travel;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
@@ -82,6 +83,7 @@ public class NavBarAdapter extends RecyclerView.Adapter<NavBarAdapter.MyViewHold
 
             LinearLayout li =(LinearLayout) v.findViewById(R.id.custom_row_layout);
             li.setBackgroundColor(Color.parseColor("#EEEEEE"));
+            context.startActivity(new Intent(context,CarsActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             return false;
 
         }
